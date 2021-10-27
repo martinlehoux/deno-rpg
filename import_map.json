@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "/domain/": "./src/domain/",
+    "/application/": "./src/application/",
+    "/infrastructure/": "./src/infrastructure/",
+    "testing/": "https://deno.land/std@0.111.0/testing/",
+    "sqlite/": "https://deno.land/x/sqlite@v3.1.1/",
+    "oak/": "https://deno.land/x/oak@v9.0.1/"
+  }
+}
