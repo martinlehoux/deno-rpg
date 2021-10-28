@@ -5,8 +5,11 @@ import { Inventory } from "/domain/inventory.entity.ts";
 import { Recipe } from "/domain/recipe.entity.ts";
 
 import { CraftRecipeCommand } from "/application/commands/craft-recipe/craft-recipe.command.ts";
+import { StubLoggerProvider } from "/infrastructure/logger/stub-logger.provider.ts";
 
 Deno.test("craft recipe from inventory", () => {
+  const logger = new StubLoggerProvider();
+
   const inventory = new Inventory();
   inventory.addItem(Item.create({ type: ItemTypeEnum.silex }));
   inventory.addItem(Item.create({ type: ItemTypeEnum.silex }));
@@ -18,7 +21,7 @@ Deno.test("craft recipe from inventory", () => {
     new Map([[ItemTypeEnum.knife, 1]]),
   );
 
-  const action = new CraftRecipeCommand(inventory, recipe, console);
+  const action = new CraftRecipeCommand(inventory, recipe, logger);
   action.execute();
 
   assertStrictEquals(inventory.getCountOfType(ItemTypeEnum.silex), 1);
