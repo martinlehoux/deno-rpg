@@ -13,6 +13,7 @@ jobs:
       - run: deno lint
   
   test:
+    needs: lint
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -21,3 +22,17 @@ jobs:
           deno-version: v1.15
       - run: deno test --import-map=import_map.json --jobs 4
   
+  build:
+    runs-on: ubuntu-20.04
+    needs: test
+    env:
+      IMAGE: "ghcr.io/${{ github.repository }}:${{ github.sha }}"
+    steps:
+      - uses: actions/checkout@v2
+      - run: "docker build -t $IMAGE ."
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker push $IMAGE
