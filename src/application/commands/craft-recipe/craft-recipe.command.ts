@@ -1,9 +1,10 @@
 import { Inventory } from "/domain/inventory.entity.ts";
 import { Recipe } from "/domain/recipe.entity.ts";
 
+import { Command } from "/application/commands/command.ts";
 import { LoggerService } from "/application/logger.service.ts";
 
-export class CraftRecipeCommand {
+export class CraftRecipeCommand implements Command {
   constructor(
     private readonly inventory: Inventory,
     private readonly recipe: Recipe,
