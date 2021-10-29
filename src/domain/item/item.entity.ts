@@ -5,13 +5,20 @@ export enum ItemTypeEnum {
 }
 
 export class Item {
-  constructor(public readonly id: string, public readonly type: ItemTypeEnum) {
+  constructor(
+    public readonly id: string,
+    public readonly type: ItemTypeEnum,
+    public readonly ownerId: string | null,
+  ) {
   }
 
-  static create(data: Omit<Item, "id">): Item {
+  static create(
+    { type, ownerId }: Pick<Item, "type"> & Partial<Pick<Item, "ownerId">>,
+  ): Item {
     return new Item(
       crypto.randomUUID(),
-      data.type,
+      type,
+      ownerId ?? null,
     );
   }
 }
