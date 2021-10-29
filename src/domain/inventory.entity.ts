@@ -1,10 +1,10 @@
 import { Item, ItemTypeEnum } from "/domain/item/item.entity.ts";
 
 export class Inventory {
-  private readonly items: Map<string, Item>;
+  private readonly items = new Map<string, Item>();
 
-  constructor() {
-    this.items = new Map();
+  constructor(items: Item[] = []) {
+    this.items = new Map(items.map((item) => [item.id, item]));
   }
 
   public addItem(item: Item): void {
