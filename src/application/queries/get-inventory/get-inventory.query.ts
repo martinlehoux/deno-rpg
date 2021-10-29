@@ -1,7 +1,7 @@
-import { QueryHandler } from "/application/queries/mod.ts"
+import { QueryHandler } from "/application/queries/mod.ts";
 
-import { Inventory } from "/domain/inventory.entity.ts"
-import { ItemRepositoryService } from '/domain/item/item-repository.service.ts'
+import { Inventory } from "/domain/inventory.entity.ts";
+import { ItemRepositoryService } from "/domain/item/item-repository.service.ts";
 
 export class GetInventoryQuery {
   constructor(
@@ -9,9 +9,10 @@ export class GetInventoryQuery {
   ) {}
 }
 
-export class GetInventoryQueryHandler extends QueryHandler<GetInventoryQuery, Inventory> {
+export class GetInventoryQueryHandler
+  extends QueryHandler<GetInventoryQuery, Inventory> {
   constructor(private readonly itemRepository: ItemRepositoryService) {
-    super()
+    super();
   }
 
   execute({ userId }: GetInventoryQuery) {
