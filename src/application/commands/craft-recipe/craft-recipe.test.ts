@@ -1,4 +1,4 @@
-import { assertStrictEquals } from "testing/asserts.ts";
+import { assertEquals } from "testing/asserts.ts";
 
 import { Item, ItemTypeEnum } from "/domain/item.entity.ts";
 import { Inventory } from "/domain/inventory.entity.ts";
@@ -24,7 +24,7 @@ Deno.test("craft recipe from inventory", () => {
   const action = new CraftRecipeCommand(inventory, recipe, logger);
   action.execute();
 
-  assertStrictEquals(inventory.getCountOfType(ItemTypeEnum.silex), 1);
-  assertStrictEquals(inventory.getCountOfType(ItemTypeEnum.stick), 0);
-  assertStrictEquals(inventory.getCountOfType(ItemTypeEnum.knife), 1);
+  assertEquals(inventory.getCountOfType(ItemTypeEnum.silex), 1);
+  assertEquals(inventory.getCountOfType(ItemTypeEnum.stick), 0);
+  assertEquals(inventory.getCountOfType(ItemTypeEnum.knife), 1);
 });
