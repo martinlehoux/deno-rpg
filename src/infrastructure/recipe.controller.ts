@@ -4,7 +4,7 @@ import { CraftRecipeCommand } from "/application/commands/craft-recipe/craft-rec
 
 import { Inventory } from "/domain/inventory.entity.ts";
 import { Recipe } from "/domain/recipe.entity.ts";
-import { Item, ItemTypeEnum } from "/domain/item.entity.ts";
+import { Item, ItemTypeEnum } from "/domain/item/item.entity.ts";
 
 export const recipeRouter = new Router();
 

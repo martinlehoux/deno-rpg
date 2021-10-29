@@ -1,7 +1,7 @@
 import { assertEquals } from "testing/asserts.ts";
 
 import { Inventory } from "/domain/inventory.entity.ts";
-import { Item, ItemTypeEnum } from "/domain/item.entity.ts";
+import { Item, ItemTypeEnum } from "/domain/item/item.entity.ts";
 
 Deno.test("inventory add item", () => {
   const inventory = new Inventory();

@@ -1,4 +1,4 @@
-import { Item, ItemTypeEnum } from "/domain/item.entity.ts";
+import { Item, ItemTypeEnum } from "/domain/item/item.entity.ts";
 
 export class Inventory {
   private readonly items: Map<string, Item>;

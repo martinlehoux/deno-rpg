@@ -1,6 +1,6 @@
 import { assertEquals } from "testing/asserts.ts";
 
-import { Item, ItemTypeEnum } from "/domain/item.entity.ts";
+import { Item, ItemTypeEnum } from "/domain/item/item.entity.ts";
 import { Recipe } from "/domain/recipe.entity.ts";
 
 Deno.test("recipe with no ingredients should be available with no ingredients", () => {
